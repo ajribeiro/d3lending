@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" type="image/ico" href="static/images/favicon.png"/>
+        <meta charset="utf-8">
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="static/assets/jquery.js"></script>
+        <link rel="stylesheet" type="text/css" href="static/assets/d3lending.css"/>
+        <title>Peer-Portal Backtesting Engine</title>
+    </head>
+    <body onload='populate_menus()'>
+        <form id='myform' method='GET', action='_noop'>
+            <div id='plotarea' class='plotarea'>
+                <h1 style='text-align:center'>Peer-Portal Backtesting Engine</h1>
+                <p>
+                    A note about the strategies:  Dafest picks only 'A' and 'B' loans as 
+                    classified by Lending Club.  Random Forest uses a Machine Learning
+                    Algorithm to Pick the best Loans
+                </p>
+                <table id='options' width='100%' border=1>
+                    <tr>
+                        <th colspan=3>Training Start Date</th>
+                        <th colspan=3>Training End Date</th>
+                    </tr>
+                    <tr>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>Day</th>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>Day</th>
+                    </tr>
+                    <tr>
+                        <td id='syear'></td>
+                        <td id='smon'></td>
+                        <td id='sday'></td>
+                        <td id='eyear'></td>
+                        <td id='emon'></td>
+                        <td id='eday'></td>
+                    </tr>
+                    <tr colspan=4>
+                        <th>Test Type:</th>
+                        <td><input type='radio' name='ptype' value='Absolute Profit' checked>Absolute Profit</td>
+                        <td><input type='radio' name='ptype' value='Percent Profit'>Percent Profit</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr colspan=6 id='models'>
+                        <th>Select strategies</th>
+                    </tr>
+                    <script type="text/javascript">
+                        $.getJSON('static/posmodels.json',function(data){
+                            for(var i=0;i<data.length;i++){
+                                var td = document.createElement('td')
+                                var txt = "<input type='checkbox' name='mtype' "
+                                txt += "id='"+data[i]+"' value='"+data[i]+"' "
+                                if(i == 0)
+                                    txt += 'checked'
+                                txt += ">"+data[i]
+                                td.innerHTML = txt
+                                document.getElementById('models').appendChild(td)
+                            }
+                        })
+                    </script>
+                </table>
+                <input type='submit' value='Run Backtester!'>
+                <script src="static/assets/backtestvis.js"></script>
+            </div>
+        </form>
+    </body>
+</html>

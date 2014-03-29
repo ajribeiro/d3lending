@@ -1,0 +1,83 @@
+.axis{
+    font-size:.9em;
+}
+
+.axis_label{
+    text-anchor:middle;
+}
+body{
+    font-family: MyriadPro, Helvetica, Arial, sans-serif;
+}
+
+path {
+    fill:none;
+    stroke:black;
+    stroke-width:2px;
+}
+.tick {
+    fill:black;
+    stroke:black;
+
+}
+
+circle{
+    stroke-width:0px;
+    cursor:crosshair;
+}
+
+.crosshatch{
+    stroke:black;
+}
+
+.plotarea{
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+circle.Market{
+    fill:teal;
+}
+circle.Safest{
+    fill:orange;
+}
+circle.RandomForest{
+    fill:purple;
+}
+
+/*attributes for line elements*/
+path{
+    fill:none;
+    stroke-width:4;
+}
+path.Market{
+    stroke:teal;
+}
+path.Safest{
+    stroke:orange;
+}
+path.RandomForest{
+    stroke:purple;
+}
+.linelabel{
+    fill:white;
+}
+.labeltip{
+    font-family: MyriadPro, Helvetica, Arial, sans-serif;
+    stroke:black;
+    font-size: 20px;
+}
+.tipbg{
+    stroke:black;
+    fill:white;
+}
+
+.loadingdiv{
+    position: absolute;
+    left: 40%;
+    top:50%;
+    text-align: center;
+    background-color: white;
+    width: 250px;
+}
